@@ -101,7 +101,7 @@ class TelegramSender:
         max_retries = 3
         for attempt in range(1, max_retries + 1):
             try:
-                response = requests.post(api_url, json=payload, timeout=10)
+                response = requests.post(api_url, json=payload, timeout=30)
             except (requests.exceptions.ConnectionError, requests.exceptions.Timeout) as e:
                 if attempt < max_retries:
                     delay = 2 ** attempt  # 2s, 4s
